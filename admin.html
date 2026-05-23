@@ -1,1 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Nexus Hub Engine | Administration Console</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/admin.css">
+    <!-- Supabase CDN Hooks -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <!-- Marked Engine Engine Integration -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
 
+    <div class="admin-layout">
+        <aside class="sidebar glass-panel">
+            <div class="sidebar-brand">🧬 Core Control</div>
+            <nav class="sidebar-nav">
+                <button class="nav-item active" onclick="switchSection('leadsView')">📋 Leads Database</button>
+                <button class="nav-item" onclick="switchSection('generatorView')">⚡ MD Generator</button>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <!-- Leads View Segment Interface -->
+            <section id="leadsView" class="admin-section active-section">
+                <div class="dashboard-header">
+                    <div>
+                        <h1 style="font-size: 1.6rem;">Lead Intelligence Management Matrix</h1>
+                        <p style="color:var(--text-muted); font-size:0.85rem;">Review, filter, and extract global unlocks configurations metrics payload assets directly.</p>
+                    </div>
+                    <button class="btn-primary" onclick="exportLeadsCSV()">📥 Export CSV Database</button>
+                </div>
+
+                <div class="glass-panel" style="padding: 1rem; margin-bottom: 1.5rem; display: flex; gap: 1rem;">
+                    <input type="text" id="leadSearch" class="search-input" placeholder="Search leads inside rows..." style="max-width: 100%;">
+                </div>
+
+                <div class="glass-panel table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Mobile Number</th>
+                                <th>Target Academic Scope</th>
+                                <th>Timestamp</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="leadsTableBody">
+                            <tr>
+                                <td colspan="5" style="text-align:center; color:var(--text-muted); padding:2rem;">Connecting core intelligence data rows...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Markdown Developer Studio Utility Module Box Area Segment Layout -->
+            <section id="generatorView" class="admin-section">
+                <div class="dashboard-header">
+                    <div>
+                        <h1 style="font-size: 1.6rem;">Markdown Architecture Engine Workspace</h1>
+                        <p style="color:var(--text-muted); font-size:0.85rem;">Compile clean, responsive structures mapped exactly to internal schema files configurations.</p>
+                    </div>
+                    <button class="btn-primary" onclick="generateNoteMetadataLink()">🔗 Generate Workspace Links</button>
+                </div>
+
+                <div class="generator-grid">
+                    <div class="glass-panel studio-box">
+                        <h3>Raw Content Structuring Terminal</h3>
+                        <textarea id="markdownInput" class="studio-textarea" placeholder="# Enter premium document layout structure headers elements standard syntax formulas here..."></textarea>
+                    </div>
+                    <div class="glass-panel studio-box">
+                        <h3>Real-time Document Visual Compilation Proofing</h3>
+                        <div id="livePreviewContainer" class="markdown-body studio-preview"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="js/app.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>

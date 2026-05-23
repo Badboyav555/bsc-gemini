@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Reading Workspace | BSc Nexus</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/notes.css">
+    <!-- Supabase CDN Integration -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <!-- Marked Engine Integration -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+
+    <div id="loadingScreen" class="loading-overlay">
+        <div class="spinner"></div>
+    </div>
+
+    <div id="progressContainer" class="progress-bar-container">
+        <div id="progressBar" class="progress-bar"></div>
+    </div>
+
+    <nav class="navbar">
+        <div style="display: flex; align-items: center; gap: 1rem;">
+            <a id="navBack" href="#" style="text-decoration: none; color: var(--text-main); font-size: 1.1rem;">←</a>
+            <span id="docHeaderTitle" style="font-weight: 600; font-size: 0.95rem;">Loading Workspace...</span>
+        </div>
+        <div style="display: flex; gap: 0.5rem; align-items: center;">
+            <select id="langToggle" class="lang-select">
+                <option value="en">English (EN)</option>
+                <option value="hi">Hindi (HI)</option>
+            </select>
+        </div>
+    </nav>
+
+    <div class="workspace">
+        <aside class="toc-sidebar glass-panel" id="tocSidebar">
+            <h4 style="margin-bottom: 0.75rem; font-size: 0.85rem; text-transform: uppercase; color: var(--text-muted); letter-spacing: 0.05em;">Table of Contents</h4>
+            <div id="tocContent"></div>
+        </aside>
+
+        <main class="reading-container">
+            <div id="errorCard" class="glass-panel error-card" style="display: none;">
+                <h3>⚠️ File Not Found</h3>
+                <p>We could not locate this specific unit note setup. Please verify deployment paths or try again.</p>
+                <button onclick="window.location.reload()" class="btn-primary" style="margin-top:1rem;">Retry Fetch</button>
+            </div>
+
+            <!-- Resource Interceptor Buttons Box -->
+            <div id="assetBar" class="asset-bar glass-panel" style="display:none; margin-bottom:1.5rem; padding:0.75rem 1rem; gap:1rem;">
+                <button id="previewPdfBtn" class="btn-secondary">👁️ Preview PDF</button>
+                <a id="downloadPdfBtn" href="#" download class="btn-secondary" style="text-decoration:none;">📥 Download PDF</a>
+            </div>
+
+            <article id="markdownRender" class="markdown-body"></article>
+
+            <!-- 30% Paywall Lock Modal Overlay -->
+            <div id="lockOverlay" class="lock-overlay" style="display: none;">
+                <div class="glass-panel lock-modal">
+                    <h2>🧬 Unlock Premium Resources</h2>
+                    <p>Gain absolute complete unthrottled access to entire semesters notes repository database securely.</p>
+                    <form id="leadForm">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" id="leadName" required placeholder="John Doe">
+                        </div>
+                        <div class="form-group">
+                            <label>Mobile Number</label>
+                            <input type="tel" id="leadPhone" pattern="[0-9]{10}" required placeholder="9876543210">
+                        </div>
+                        <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; padding: 0.8rem;">Request Access Unlock</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Image Zoom Modal Light Framework -->
+    <div id="zoomModal" class="zoom-modal" onclick="this.style.display='none'">
+        <img id="zoomImg" src="" alt="Zoom Preview">
+    </div>
+
+    <script src="js/app.js"></script>
+    <script src="js/notes.js"></script>
+</body>
+</html>

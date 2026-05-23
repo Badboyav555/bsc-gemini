@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Syllabus Units | BSc Nexus</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="index.html" class="brand">🧬 BSc Nexus</a>
+        <div class="search-container">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="globalSearch" class="search-input" placeholder="Search units...">
+        </div>
+    </nav>
+
+    <main class="app-container">
+        <div style="margin-bottom: 1.5rem;"><a id="backBtn" href="#" style="color: var(--primary); text-decoration: none; font-size: 0.9rem;">← Back to Subjects</a></div>
+        <h2 class="section-title" id="subjectTitle">Syllabus Structure</h2>
+        
+        <div class="grid-responsive" id="unitsGrid">
+            <!-- Units loops injected exactly targeting files seamlessly -->
+        </div>
+    </main>
+
+    <script src="js/app.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const { sem, subject } = getUrlParams();
+            if(!sem || !subject) { window.location.href = "index.html"; return; }
+            
+            document.getElementById("backBtn").href = `semester.html?sem=${sem}`;
+            document.getElementById("subjectTitle").innerText = `${subject.toUpperCase()} - Unit Selection`;
+            
+            const grid = document.getElementById("unitsGrid");
+            
+            for(let i=1; i<=5; i++) {
+                const panel = document.createElement("div");
+                panel.className = "glass-panel";
+                panel.setAttribute("data-searchable", `Unit ${i} Notes Chapter`);
+                panel.innerHTML = `
+                    <a href="notes.html?sem=${sem}&subject=${subject}&note=unit${i}" class="card-clickable">
+                        <div class="card-icon">U${i}</div>
+                        <h3>Unit ${i} Documentation</h3>
+                        <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.25rem;">Core concepts, visual models, and exam verification sets.</p>
+                    </a>
+                `;
+                grid.appendChild(panel);
+            }
+        });
+    </script>
+</body>
+</html>
